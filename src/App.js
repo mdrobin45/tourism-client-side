@@ -11,11 +11,12 @@ import Login from './Components/Pages/User/Login/Login';
 import Register from './Components/Pages/User/Register/Register';
 import About from './Components/Pages/About/About';
 import PlaceOrder from './Components/Pages/User/PlaceOrder/PlaceOrder';
+import AuthProvider from './Context/AuthProvider';
 
 const App = () =>
 {
   return (
-    <div className='App'>
+    <AuthProvider className='App'>
       <Router>
       <Header />
         <Switch>
@@ -52,7 +53,7 @@ const App = () =>
         </Switch>
         <Footer/>
       </Router>
-    </div>
+    </AuthProvider>
   );
 };
 
