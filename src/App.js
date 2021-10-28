@@ -12,6 +12,7 @@ import Register from './Components/Pages/User/Register/Register';
 import About from './Components/Pages/About/About';
 import PlaceOrder from './Components/Pages/User/PlaceOrder/PlaceOrder';
 import AuthProvider from './Context/AuthProvider';
+import PrivetRoute from './Components/PrivetRoute/PrivetRoute';
 
 const App = () =>
 {
@@ -41,9 +42,9 @@ const App = () =>
           <Route exact path='/manage-order'>
             <ManageOrder/>
           </Route>
-          <Route exact path='/place-order'>
+          <PrivetRoute exact path='/place-order'>
             <PlaceOrder/>
-          </Route>
+          </PrivetRoute>
           <Route exact path='/login'>
             <Login/>
           </Route>

@@ -4,11 +4,11 @@ import useAuth from '../../Hooks/useAuth';
 
 const PrivetRoute = ({ children, ...rest }) =>
 {
-    const auth = useAuth();
+    const {user} = useAuth();
     return (
         <Route
             {...rest}
-            render={({location})=>auth.user?(children):(<Redirect to={{pathname:'/login',state:{from:location}}}/>)}
+            render={({location})=>user.email?(children):(<Redirect to={{pathname:'/login',state:{from:location}}}/>)}
         />
     );
 };

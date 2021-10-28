@@ -1,13 +1,25 @@
 import React from 'react';
+import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../../../Hooks/useAuth';
 
 const Login = () =>
 {
-    const { user, googleSignIn } = useAuth();
-    console.log(user);
+    const location = useLocation();
+    const history = useHistory();
+    const { setUser, googleSignIn} = useAuth();
+
+    const googleSignInHandle = () =>
+    {
+        googleSignIn()
+            .then(result =>
+            {
+                setUser(result.user)
+                history.push(location.state?.from || '/')
+            })
+    }
     return (
         <div>
-            <button onClick={googleSignIn}>Google</button>
+            <button onClick={googleSignInHandle}>Google</button>
         </div>
     );
 };
