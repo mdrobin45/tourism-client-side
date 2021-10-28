@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Redirect, Route } from 'react-router';
 
 const PrivetRoute = ({ children, ...rest }) =>
 {
@@ -7,7 +7,7 @@ const PrivetRoute = ({ children, ...rest }) =>
     return (
         <Route
             {...rest}
-            render={({location})=>{}}
+            render={({location})=>auth.user?(children):(<Redirect to={{pathname:'/login',state:{from:location}}}/>)}
         />
     );
 };
