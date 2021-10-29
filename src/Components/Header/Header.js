@@ -7,7 +7,7 @@ import useAuth from '../../Hooks/useAuth';
 
 const navigation = [
     { name: 'Home', to: '/home', current: true },
-    { name: 'About', to: '/about', current: false },
+    { name: 'Add Room', to: '/add-room', current: false },
     { name: 'Rooms', to: '/rooms', current: false },
     { name: 'Contact', to: '/contact', current: false },
   ]

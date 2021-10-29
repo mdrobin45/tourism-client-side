@@ -1,0 +1,9 @@
+.subBanner{
+    background: url('../../../images/subbanner.jpg');
+    background-blend-mode: soft-light;
+    background-color:#6b6b6b;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:10rem 0;
+}
