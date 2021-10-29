@@ -11,7 +11,7 @@ const googleProvider = new GoogleAuthProvider();
 const useFirebase = () =>
 {
     const [user, setUser] = useState({});
-    const [isLogin, setIsLogin] = useState(false);
+    const [isLogin, setIsLogin] = useState(true);
 
     // Sign in with google
     const googleSignIn = () =>
@@ -30,7 +30,7 @@ const useFirebase = () =>
         {
             if (user) {
                 setUser(user)
-                setIsLogin(true);
+                setIsLogin(false);
             }
         })
     }, [])

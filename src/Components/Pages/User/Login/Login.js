@@ -8,6 +8,7 @@ const Login = () =>
     const history = useHistory();
     const { setUser, googleSignIn} = useAuth();
 
+    // Handle Google sign in
     const googleSignInHandle = () =>
     {
         googleSignIn()

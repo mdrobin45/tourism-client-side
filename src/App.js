@@ -13,6 +13,7 @@ import About from './Components/Pages/About/About';
 import PlaceOrder from './Components/Pages/User/PlaceOrder/PlaceOrder';
 import AuthProvider from './Context/AuthProvider';
 import PrivetRoute from './Components/PrivetRoute/PrivetRoute';
+import SingleRoom from './Components/Pages/SingleRoom/SingleRoom';
 
 const App = () =>
 {
@@ -42,7 +43,10 @@ const App = () =>
           <Route exact path='/manage-order'>
             <ManageOrder/>
           </Route>
-          <PrivetRoute exact path='/place-order'>
+          <Route exact path='/rooms/:id'>
+            <SingleRoom/>
+          </Route>
+          <PrivetRoute exact path='/place-order/:id'>
             <PlaceOrder/>
           </PrivetRoute>
           <Route exact path='/login'>
