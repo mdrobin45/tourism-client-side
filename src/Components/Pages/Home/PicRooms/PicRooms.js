@@ -34,10 +34,11 @@ const PicRooms = () =>
                         key={room._id}>
                         <img src={room?.img} alt='Thumbnail' />
                         <h2 className='py-3 text-2xl'>{room?.name}</h2>
+                        <h3 className='text-xl text-purple-600'>Price: ${room?.price}</h3>
                         <p className='text-lg text-gray-600'>{room?.shortDes}</p>
-                        <div>
-                            <NavLink to={`/rooms/${room?._id}`}>Read More</NavLink>
-                            <NavLink to={`/place-order/${room?._id}`}>Book Now</NavLink>
+                        <div className='flex justify-between items-center'>
+                            <NavLink className='bg-purple-600 text-white py-3 px-6' to={`/rooms/${room?._id}`}>Read More</NavLink>
+                            <NavLink className='bg-purple-600 text-white py-3 px-6' to={`/place-order/${room?._id}`}>Book Now</NavLink>
                         </div>
                     </div>)
                 }

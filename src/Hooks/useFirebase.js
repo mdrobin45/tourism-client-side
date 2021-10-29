@@ -17,10 +17,6 @@ const useFirebase = () =>
     const googleSignIn = () =>
     {
         return signInWithPopup(auth, googleProvider)
-            /* .then((result) =>
-            {
-                setUser(result.user)
-            }) */
     }
 
     // On auth state change
@@ -30,8 +26,8 @@ const useFirebase = () =>
         {
             if (user) {
                 setUser(user)
-                setIsLogin(false);
             }
+            setIsLogin(false);
         })
     }, [])
     
@@ -40,7 +36,11 @@ const useFirebase = () =>
     {
         signOut(auth).then(() =>
         {
-            console.log('Logged out');
+            setUser({});
+            setIsLogin(false);
+        }).finally(() =>
+        {
+            setIsLogin(false);
         })
     }
     return {
@@ -48,6 +48,7 @@ const useFirebase = () =>
         user,
         isLogin,
         setUser,
+        setIsLogin,
         logOut
     }
 };

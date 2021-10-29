@@ -6,7 +6,7 @@ const Login = () =>
 {
     const location = useLocation();
     const history = useHistory();
-    const { setUser, googleSignIn} = useAuth();
+    const { setUser,setIsLogin, googleSignIn} = useAuth();
 
     // Handle Google sign in
     const googleSignInHandle = () =>
@@ -16,6 +16,10 @@ const Login = () =>
             {
                 setUser(result.user)
                 history.push(location.state?.from || '/')
+                
+            }).finally(() =>
+            {
+                setIsLogin(false);
             })
     }
     return (
