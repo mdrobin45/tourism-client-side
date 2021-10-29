@@ -1,9 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import '../../Container/Container.css'
 
-const Rooms = () => {
+const Rooms = () =>
+{
+    const [rooms, setRooms] = useState([]);
+    useEffect(() =>
+    {
+        fetch('http://evening-ridge-38074.herokuapp.com/rooms')
+            .then(res => res.json())
+            .then(data => setRooms(data));
+    }, [])
     return (
-        <div>
-            <h2>This is Room</h2>
+        <div className='container'>
+            <div className='text-center mt-16 py-6'>
+                <div className='w-2/4 m-auto'>
+                    <h2 className='font-bold text-3xl'>Pic Room And Stay With Us</h2>
+                    <p className='py-3 text-lg'>
+                    Pick any of our hotel rooms to experience the delightful decor, complemented with modern amenities for a comfortable stay.
+                    </p>
+                </div>
+            </div>
+
+            <div className='grid grid-cols-2 gap-4'>
+                {
+                    rooms.map(room => <div
+                        className='p-3 rounded shadow'
+                        key={room._id}>
+                        <img src={room?.img} alt='Thumbnail' />
+                        <h2 className='py-3 text-2xl'>{room?.name}</h2>
+                        <h3 className='text-xl text-purple-600'>Price: ${room?.price}</h3>
+                        <p className='text-lg text-gray-600'>{room?.shortDes}</p>
+                        <div className='flex justify-between items-center'>
+                            <NavLink className='bg-purple-600 text-white py-3 px-6' to={`/rooms/${room?._id}`}>Read More</NavLink>
+                            <NavLink className='bg-purple-600 text-white py-3 px-6' to={`/place-order/${room?._id}`}>Book Now</NavLink>
+                        </div>
+                    </div>)
+                }
+            </div>
         </div>
     );
 };

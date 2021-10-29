@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useState,useParams } from 'react/cjs/react.development';
+import { useState } from 'react/cjs/react.development';
 import '../../../Container/Container.css'
 
 const PicRooms = () =>

@@ -8,7 +8,7 @@ import useAuth from '../../Hooks/useAuth';
 const navigation = [
     { name: 'Home', to: '/home', current: true },
     { name: 'About', to: '/about', current: false },
-    { name: 'Rooms', to: 'rooms', current: false },
+    { name: 'Rooms', to: '/rooms', current: false },
     { name: 'Contact', to: '/contact', current: false },
   ]
   
@@ -94,7 +94,7 @@ const Header = () =>
                       <Menu.Item>
                         {({ active }) => (
                           <NavLink
-                            to="my-order"
+                            to="/my-order"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             My Order
@@ -104,7 +104,7 @@ const Header = () =>
                       <Menu.Item>
                         {({ active }) => (
                           <NavLink
-                            to="manage-order"
+                            to="/manage-order"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Manage Orders
