@@ -1,39 +1,55 @@
 import React, { useEffect,useState } from 'react';
 import { useParams } from 'react-router';
 import { useForm } from "react-hook-form";
+import '../../../Container/Container.css'
+import useAuth from '../../../../Hooks/useAuth';
+import axios from "axios";
 
 const PlaceOrder = () =>
 {
     const [room, setRoom] = useState({});
     const { id } = useParams();
+    const { user } = useAuth();
+
     useEffect(() =>
     {
         fetch(`https://evening-ridge-38074.herokuapp.com/rooms/${id}`)
             .then(res => res.json())
             .then(data => setRoom(data));
     }, [id])
-    console.log(room);
-    // React hook form 
+
+
+    // React hook form
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data =>
+    {
+        axios.post(`https://evening-ridge-38074.herokuapp.com/my-orders`, {...data,...room})
+            .then(res =>
+            {
+            if (res.status === 200) {
+                alert('Order added')
+            }
+            })
+    };
 
     return (
-        <div>
-            <img src={room?.img} alt='Thumbnail' />
-            <section className='flex justify-between'>
-                <div>
+        <div className='container'>
+            <img className='w-full' src={room?.img} alt='Thumbnail' />
+            <section className='flex mt-16 justify-between'>
+                <div className='p-4 w-11/12'>
                     <h2 className='text-3xl'>{room?.name}</h2>
                     <p className='text-lg'>{room?.longDes}</p>
-                    <h3 className='text-purple-600'>Pay: ${room?.price}</h3>
+                    <h3 className='text-purple-600 text-xl'>Pay: ${room?.price}</h3>
                 </div>
                 <div>
-                    <h2>Your order</h2>
+                    <h2 className='font-bold text-3xl'>Your order</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register("name")} />
-                        <input {...register("email", { required: true })} type='email' />
-                        <input {...register("address", { required: true })} />
-                        <input {...register("phone", { required: true })} type='number' />
-                        <input type="submit" />
+                        <input value={user?.displayName} readOnly className='border-2 border-purple-500 my-3 py-2 rounded w-full px-3' placeholder='Name' {...register("name")} />
+                        <input value={user?.email} readOnly className='border-2 border-purple-500 my-3 py-2 rounded w-full px-3' {...register("email", { required: true })} type='email' />
+                        <input value={room?.name} readOnly className='border-2 border-purple-500 my-3 py-2 rounded w-full px-3' {...register("roomName", { required: true })} />
+                        <input className='border-2 border-purple-500 my-3 py-2 rounded w-full px-3' placeholder='Address' {...register("address", { required: true })} />
+                        <input className='border-2 border-purple-500 my-3 py-2 rounded w-full px-3' placeholder='Phone' {...register("phone", { required: true })} type='number' />
+                        <input value='Place Order' className='bg-purple-600 cursor-pointer px-10 py-3 text-white' type="submit" />
                     </form>
                 </div>
             </section>
