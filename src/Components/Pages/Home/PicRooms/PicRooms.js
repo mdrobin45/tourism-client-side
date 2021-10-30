@@ -12,7 +12,7 @@ const PicRooms = () =>
     const [rooms, setRooms] = useState([]);
     useEffect(() =>
     {
-        fetch('http://evening-ridge-38074.herokuapp.com/rooms')
+        fetch('https://evening-ridge-38074.herokuapp.com/rooms')
             .then(res => res.json())
             .then(data => setRooms(data));
     }, []);

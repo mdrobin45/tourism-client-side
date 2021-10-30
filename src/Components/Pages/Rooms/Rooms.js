@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import '../../Container/Container.css'
+import '../../Container/Container.css';
 import postIcon from '../../images/post.webp';
 import compassIcon from '../../images/compass.webp';
 import bicycleIcon from '../../images/bicycle.webp';
@@ -13,13 +13,13 @@ const Rooms = () =>
     const [rooms, setRooms] = useState([]);
     useEffect(() =>
     {
-        fetch('http://evening-ridge-38074.herokuapp.com/rooms')
+        fetch('https://evening-ridge-38074.herokuapp.com/rooms')
             .then(res => res.json())
             .then(data => setRooms(data));
-    }, [])
+    }, []);
     return (
         <>
-            <AllPageBanner pageName='Our Offers'/>
+            <AllPageBanner pageName='Our Offers' />
             <div className='container'>
                 <div className='mt-16 py-6'>
                     <div>
@@ -65,7 +65,7 @@ const Rooms = () =>
                 </div>
             </div>
         </>
-        
+
     );
 };
 
