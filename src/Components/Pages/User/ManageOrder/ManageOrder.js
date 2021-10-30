@@ -45,8 +45,11 @@ const ManageOrder = () =>
     return (
         <div>
             {
-                orders?.map(item =><section key={item._id}>
-                    <div className='border flex pr-6 m-auto my-6 rounded shadow w-10/12'>
+                orders?.map(item => <section key={item._id}>
+                    {
+                        item?.status==='Pending'?<div className='text-center rounded-t-lg bg-yellow-500 text-white text-lg py-2 w-10/12 m-auto'><h2>Pending</h2></div>:<div className='text-center rounded-t-lg bg-green-600 text-white text-lg py-2 w-10/12 m-auto'><h2>Approved</h2></div>
+                    }
+                    <div className='border rounded-b-lg flex pr-6 m-auto mb-6 shadow w-10/12'>
                         <div className='w-3/4 pr-6'>
                             <div>
                                 <img className='w-full' src={item?.img} alt="Thumbnail" />
@@ -78,7 +81,7 @@ const ManageOrder = () =>
                             <button onClick={()=>deleteOrder(item?._id)} className='bg-red-500 block w-full my-3 px-10 py-3 rounded text-white'>Delete</button>
                             <button className='py-3 bg-yellow-500 block w-full my-3 rounded text-white'>Update</button>
                             {
-                                item?.status === 'Approved'?<button disabled onClick={() => approveOrder(item?._id)} className='bg-green-600 px-10 block w-full my-3 py-3 rounded text-white'>Already Approved</button>:<button onClick={() => approveOrder(item?._id)} className='bg-green-600 px-10 block w-full my-3 py-3 rounded text-white'>Approve</button>
+                                item?.status === 'Approved'?<button disabled onClick={() => approveOrder(item?._id)} className='bg-green-600 cursor-not-allowed px-10 block w-full my-3 py-3 rounded text-white'>Already Approved</button>:<button onClick={() => approveOrder(item?._id)} className='bg-green-600 px-10 block w-full my-3 py-3 rounded text-white'>Approve</button>
                             }
                         </div>
                     </div>
