@@ -33,7 +33,7 @@ const PicRooms = () =>
                         key={room._id}>
                         <img className='rounded' src={room?.img} alt='Thumbnail' />
                         <div className='flex items-center justify-between pb-2 pt-6'>
-                            <h3 className='font-bold text-3xl text-yellow-500'>${room?.price}</h3>
+                            <h3 className='font-bold text-3xl text-yellow-500'>${room?.price}/<sub className='text-gray-500 text-sm'>per night</sub></h3>
                             <div className='flex justify-center'>
                                 <img className='px-2' src={postIcon} alt="Post" />
                                 <img className='px-2' src={compassIcon} alt="Post" />

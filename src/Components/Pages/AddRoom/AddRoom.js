@@ -9,7 +9,7 @@ const AddRoom = () =>
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data =>
     {
-        axios.post('http://localhost:5000/rooms', data)
+        axios.post('https://evening-ridge-38074.herokuapp.com/rooms', data)
             .then(res =>
             {
                 if (res.status===200) {

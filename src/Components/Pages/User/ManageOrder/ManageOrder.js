@@ -21,7 +21,7 @@ const ManageOrder = () =>
     {
         const proceed = window.confirm('Are you sure want to delete?');
         if (proceed) {
-            axios.delete(`http://localhost:5000/my-orders/${id}`)
+            axios.delete(`https://evening-ridge-38074.herokuapp.com/my-orders/${id}`)
             .then(res=>{
                 if (res.status === 200) {
                     alert('deleted')
@@ -35,7 +35,7 @@ const ManageOrder = () =>
     // Approve order
     const approveOrder = (id) =>
     {
-        axios.put(`http://localhost:5000/my-orders/${id}`)
+        axios.put(`https://evening-ridge-38074.herokuapp.com/my-orders/${id}`)
             .then(res=>{
                 if (res.status === 200) {
                     alert('approved')
