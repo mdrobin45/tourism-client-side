@@ -9,11 +9,11 @@ import Rooms from './Components/Pages/Rooms/Rooms';
 import ManageOrder from './Components/Pages/User/ManageOrder/ManageOrder';
 import Login from './Components/Pages/User/Login/Login';
 import Register from './Components/Pages/User/Register/Register';
-import About from './Components/Pages/About/About';
 import PlaceOrder from './Components/Pages/User/PlaceOrder/PlaceOrder';
 import AuthProvider from './Context/AuthProvider';
 import PrivetRoute from './Components/PrivetRoute/PrivetRoute';
 import SingleRoom from './Components/Pages/SingleRoom/SingleRoom';
+import AddRoom from './Components/Pages/AddRoom/AddRoom';
 
 const App = () =>
 {
@@ -28,8 +28,8 @@ const App = () =>
           <Route exact path='/home'>
             <Home/>
           </Route>
-          <Route exact path='/about'>
-            <About/>
+          <Route exact path='/add-room'>
+            <AddRoom/>
           </Route>
           <Route exact path='/rooms'>
             <Rooms/>
