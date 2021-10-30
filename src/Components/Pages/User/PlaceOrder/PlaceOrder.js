@@ -20,7 +20,7 @@ const PlaceOrder = () =>
 
 
     // React hook form
-    const { register, handleSubmit } = useForm();
+    const { register,reset, handleSubmit } = useForm();
     const onSubmit = data =>
     {
         const { _id, ...rest } = room;
@@ -29,6 +29,7 @@ const PlaceOrder = () =>
             {
             if (res.status === 200) {
                 alert('Order added')
+                reset();
             }
             })
     };

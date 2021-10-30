@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react/cjs/react.development';
 import '../../../Container/Container.css';
 import postIcon from '../../../images/post.webp';
 import compassIcon from '../../../images/compass.webp';
@@ -53,7 +52,7 @@ const PicRooms = () =>
                             emptyIcon={<i className="far fa-star"></i>}
                             halfIcon={<i className="fa fa-star-half-alt"></i>}
                             fullIcon={<i className="fa fa-star"></i>}
-                        />,
+                        />
 
                         <p className='text-lg text-gray-600'>{room?.description}</p>
                         <div className='flex justify-between items-center'>

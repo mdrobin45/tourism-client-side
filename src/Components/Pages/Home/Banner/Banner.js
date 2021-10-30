@@ -1,6 +1,6 @@
 import React from 'react';
 import './Banner.css'
-import container from '../../../Container/Container.css'
+import '../../../Container/Container.css'
 
 const Banner = () => {
     return (

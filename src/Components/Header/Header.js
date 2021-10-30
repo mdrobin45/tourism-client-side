@@ -7,7 +7,6 @@ import useAuth from '../../Hooks/useAuth';
 
 const navigation = [
     { name: 'Home', to: '/home', current: true },
-    { name: 'Add Room', to: '/add-room', current: false },
     { name: 'Rooms', to: '/rooms', current: false },
     { name: 'Contact', to: '/contact', current: false },
   ]
@@ -55,13 +54,23 @@ const Header = () =>
                         {item.name}
                       </NavLink>
                     ))}
-                  </div>
+                      {
+                        user?.email?<NavLink className='hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium' to='/add-room'>Add Room</NavLink>:''
+                      }
+                      {
+                        user?.email?<NavLink className='hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium' to='/my-order'>My Order</NavLink>:''
+                      }
+                      {
+                        user?.email?<NavLink className='hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium' to='/manage-order'>Manage Order</NavLink>:''
+                      }
+                    </div>
+                    
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* Profile dropdown */}
                   {
-                    user?.email?<button className='bg-purple-600 text-white px-3 py-2 rounded'>Log Out</button>:<NavLink to='/login' className='bg-purple-600 text-white px-3 py-2 rounded'>Login</NavLink>
+                    user?.email?<button onClick={logOut} className='bg-purple-600 text-white px-3 py-2 rounded'>Log Out</button>:<NavLink to='/login' className='bg-purple-600 text-white px-3 py-2 rounded'>Login</NavLink>
                   }
                 <Menu as="div" className="ml-3 relative">
                   <div>
@@ -86,27 +95,14 @@ const Header = () =>
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        {
-                         user?.email?<Menu.Item>
-                         {({ active }) => (
-                           <NavLink
-                             to="/my-order"
-                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                           >
-                             My Order
-                           </NavLink>
-                         )}
-                       </Menu.Item>:''
-                        }
-                        
                       <Menu.Item>
                         {({ active }) => (
-                          <NavLink
-                            to="/manage-order"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Manage Orders
-                          </NavLink>
+                          <p className='border-b px-3 py-2'>{user?.displayName}</p>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <p className='px-3 py-2'>{user?.email}</p>
                         )}
                       </Menu.Item>
                     </Menu.Items>
