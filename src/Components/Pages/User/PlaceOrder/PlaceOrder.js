@@ -23,8 +23,9 @@ const PlaceOrder = () =>
     const { register,reset, handleSubmit } = useForm();
     const onSubmit = data =>
     {
+        const status={status:'Pending'}
         const { _id, ...rest } = room;
-        axios.post(`https://evening-ridge-38074.herokuapp.com/my-orders`, {...data,...rest})
+        axios.post(`https://evening-ridge-38074.herokuapp.com/my-orders`, {...data,...rest,...status})
             .then(res =>
             {
             if (res.status === 200) {
