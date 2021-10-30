@@ -1,11 +1,22 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const AddRoom = () =>
 {
     // React hook form
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data =>{}
+    const { register, handleSubmit,reset } = useForm();
+    const onSubmit = data =>
+    {
+        axios.post('http://localhost:5000/rooms', data)
+            .then(res =>
+            {
+                if (res.status===200) {
+                    alert('added')
+                    reset()
+                }
+            })
+    }
     return (
         <div className='border-2 m-auto mt-16 p-6 shadow w-1/2'>
             <h2 className='font-bold pb-6 text-3xl text-center text-gray-700'>Add Room</h2>

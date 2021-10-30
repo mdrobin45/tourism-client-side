@@ -22,18 +22,18 @@ const PicRooms = () =>
     return (
         <div className='container'>
             <div className='mt-16 py-6'>
-                <div className='w-1/2'>
+                <div>
                     <h2 className='font-bold text-center text-3xl'>THE BEST OFFERS WITH ROOMS</h2>
                 </div>
             </div>
 
             <div className='grid grid-cols-3 gap-4'>
                 {
-                    rooms.map(room => <div
+                    rooms.slice(0,6).map(room => <div
                         className='p-3 py-6 rounded shadow'
                         key={room._id}>
                         <img className='rounded' src={room?.img} alt='Thumbnail' />
-                        <div className='flex items-center justify-between'>
+                        <div className='flex items-center justify-between pb-2 pt-6'>
                             <h3 className='font-bold text-3xl text-yellow-500'>${room?.price}</h3>
                             <div className='flex justify-center'>
                                 <img className='px-2' src={postIcon} alt="Post" />

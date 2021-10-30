@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../../Container/Container.css'
+import postIcon from '../../images/post.webp';
+import compassIcon from '../../images/compass.webp';
+import bicycleIcon from '../../images/bicycle.webp';
+import boatIcon from '../../images/boad.webp';
+import ReactStars from "react-rating-stars-component";
 
 const Rooms = () =>
 {
@@ -13,27 +18,44 @@ const Rooms = () =>
     }, [])
     return (
         <div className='container'>
-            <div className='text-center mt-16 py-6'>
-                <div className='w-2/4 m-auto'>
-                    <h2 className='font-bold text-3xl'>Pic Room And Stay With Us</h2>
-                    <p className='py-3 text-lg'>
-                    Pick any of our hotel rooms to experience the delightful decor, complemented with modern amenities for a comfortable stay.
-                    </p>
+            <div className='mt-16 py-6'>
+                <div>
+                    <h2 className='font-bold text-center text-3xl'>THE BEST OFFERS WITH ROOMS</h2>
                 </div>
             </div>
 
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-3 gap-4'>
                 {
                     rooms.map(room => <div
-                        className='p-3 rounded shadow'
+                        className='p-3 py-6 rounded shadow'
                         key={room._id}>
                         <img className='rounded' src={room?.img} alt='Thumbnail' />
-                        <h2 className='py-3 text-2xl'>{room?.name}</h2>
-                        <h3 className='font-bold text-gray-700 text-xl'>Price: ${room?.price}</h3>
-                        <p className='text-lg text-gray-600'>{room?.shortDes}</p>
+                        <div className='flex items-center justify-between pb-2 pt-6'>
+                            <h3 className='font-bold text-3xl text-yellow-500'>${room?.price}</h3>
+                            <div className='flex justify-center'>
+                                <img className='px-2' src={postIcon} alt="Post" />
+                                <img className='px-2' src={compassIcon} alt="Post" />
+                                <img className='px-2' src={bicycleIcon} alt="Post" />
+                                <img className='px-2' src={boatIcon} alt="Post" />
+                            </div>
+                        </div>
+
+                        <ReactStars
+                            count={5}
+                            size={24}
+                            value={room.rating}
+                            edit={false}
+                            activeColor="#ffd700"
+                            isHalf={true}
+                            emptyIcon={<i className="far fa-star"></i>}
+                            halfIcon={<i className="fa fa-star-half-alt"></i>}
+                            fullIcon={<i className="fa fa-star"></i>}
+                        />,
+
+                        <p className='text-lg text-gray-600'>{room?.description}</p>
                         <div className='flex justify-between items-center'>
-                            <NavLink className='bg-purple-600 mt-6 px-6 py-3 rounded text-white' to={`/rooms/${room?._id}`}>Read More</NavLink>
-                            <NavLink className='bg-purple-600 mt-6 px-6 py-3 rounded text-white' to={`/place-order/${room?._id}`}>Book Now</NavLink>
+                            <NavLink className='font-bold hover:text-yellow-500 mt-6' to={`/rooms/${room?._id}`}>Read More</NavLink>
+                            <NavLink className='text-yellow-500 mt-6 font-bold' to={`/place-order/${room?._id}`}>Book Now</NavLink>
                         </div>
                     </div>)
                 }
