@@ -6,6 +6,7 @@ import { BsTelephone } from 'react-icons/bs';
 import { FiMail } from 'react-icons/fi';
 import { GoLocation } from 'react-icons/go';
 import '../../Container/Container.css'
+import AllPageBanner from '../../AllPageBanner/AllPageBanner';
 
 const Contact = () =>
 {
@@ -20,11 +21,7 @@ const Contact = () =>
     });
     return (
         <>
-            <div className='m-auto pt-10 text-center md:w-2/4'>
-                <h2 className='text-5xl text-gray-600 font-bold text-center py-4'>Contact</h2>
-                <hr className='m-auto w-2/6' />
-                <p className='text-lg py-3'>Our residents come from all parts of the world, bringing you a global expertise coupled with the cutting edge research and knowledge of the University of Rochester Medical Center.</p> 
-            </div>
+            <AllPageBanner pageName='Contact Us'/>
             <div className='md:flex justify-between container rounded-lg shadow-lg border-2 py-20'>
                 <div className='md:w-2/4'>
                     <form className='bg-white px-6 pb-20 rounded-lg'>

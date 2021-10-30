@@ -1,0 +1,7 @@
+.pageBanner{
+    background:linear-gradient(rgba(44, 62, 80,0.8),rgba(44, 62, 80,0.8)),url('../images/waterfall.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10rem 0;
+}

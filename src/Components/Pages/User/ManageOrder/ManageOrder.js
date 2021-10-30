@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ReactStars from "react-rating-stars-component";
+import AllPageBanner from '../../../AllPageBanner/AllPageBanner';
 
 const ManageOrder = () =>
 {
@@ -44,8 +45,11 @@ const ManageOrder = () =>
     }
     return (
         <div>
+            <AllPageBanner pageName='Manage Orders'/>
             {
-                orders?.map(item => <section key={item._id}>
+                orders?.map(item => <section
+                    className='mt-20'
+                    key={item._id}>
                     {
                         item?.status==='Pending'?<div className='text-center rounded-t-lg bg-yellow-500 text-white text-lg py-2 w-10/12 m-auto'><h2>Pending</h2></div>:<div className='text-center rounded-t-lg bg-green-600 text-white text-lg py-2 w-10/12 m-auto'><h2>Approved</h2></div>
                     }
