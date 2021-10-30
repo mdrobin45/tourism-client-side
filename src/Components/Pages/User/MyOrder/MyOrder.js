@@ -10,7 +10,7 @@ const MyOrder = () =>
     
     useEffect(() =>
     {
-        fetch('http://localhost:5000/my-orders')
+        fetch('https://evening-ridge-38074.herokuapp.com/my-orders')
             .then(res => res.json())
             .then(data => setOrders(data));
     }, [])
