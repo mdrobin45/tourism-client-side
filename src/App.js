@@ -28,21 +28,21 @@ const App = () =>
           <Route exact path='/home'>
             <Home/>
           </Route>
-          <Route exact path='/add-room'>
+          <PrivetRoute exact path='/add-room'>
             <AddRoom/>
-          </Route>
+          </PrivetRoute>
           <Route exact path='/rooms'>
             <Rooms/>
           </Route>
           <Route exact path='/contact'>
             <Contact/>
           </Route>
-          <Route exact path='/my-order'>
+          <PrivetRoute exact path='/my-order'>
             <MyOrder/>
-          </Route>
-          <Route exact path='/manage-order'>
+          </PrivetRoute>
+          <PrivetRoute exact path='/manage-order'>
             <ManageOrder/>
-          </Route>
+          </PrivetRoute>
           <Route exact path='/rooms/:id'>
             <SingleRoom/>
           </Route>

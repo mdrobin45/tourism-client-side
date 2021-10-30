@@ -33,30 +33,36 @@ const MyOrder = () =>
     return (
         <div>
             {
-                myOrder?.map(item => <div
-                    className='border pr-6 flex items-center m-auto my-6 rounded shadow w-10/12'
-                    key={item._id}>
-                    <div>
-                        <img src={item?.img} alt="Thumbnail" />
+                myOrder?.map(item => <section key={item._id}>
+                        {
+                        item?.status==='Pending'?<div className='text-center rounded-t-lg bg-yellow-500 text-white text-lg py-2 w-10/12 m-auto'><h2>Pending</h2></div>:<div className='text-center rounded-t-lg bg-green-600 text-white text-lg py-2 w-10/12 m-auto'><h2>Approved</h2></div>
+                        }
+                        <div className='border pr-6 flex items-center m-auto mb-6 rounded-b-lg shadow w-10/12' >
+                        <div>
+                            <img src={item?.img} alt="Thumbnail" />
+                        </div>
+                        <div className='pl-6'>
+                            <h2 className='font-bold text-3xl text-yellow-500'>${item?.price}</h2>
+                            <ReactStars
+                                count={5}
+                                size={24}
+                                value={item.rating}
+                                edit={false}
+                                activeColor="#ffd700"
+                                isHalf={true}
+                                emptyIcon={<i className="far fa-star"></i>}
+                                halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                fullIcon={<i className="fa fa-star"></i>}
+                            />
+                            <p className='text-lg'>{item?.description}</p>
+                        </div>
+                        {
+                            item?.status !== 'Approved'?<button onClick={()=>cancelOrder(item?._id)} className='bg-red-500 px-10 py-3 rounded text-white'>Cancel</button>:''
+                        }
                     </div>
-                    <div className='pl-6'>
-                        <h2 className='font-bold text-3xl text-yellow-500'>${item?.price}</h2>
-                        <ReactStars
-                            count={5}
-                            size={24}
-                            value={item.rating}
-                            edit={false}
-                            activeColor="#ffd700"
-                            isHalf={true}
-                            emptyIcon={<i className="far fa-star"></i>}
-                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                            fullIcon={<i className="fa fa-star"></i>}
-                        />
-                        <p className='text-lg'>{item?.description}</p>
-                        <p className='font-bold text-green-800 text-lg'>Status: {item?.status}</p>
-                    </div>
-                    <button onClick={()=>cancelOrder(item?._id)} className='bg-red-500 px-10 py-3 rounded text-white'>Cancel</button>
-                </div>)
+                </section> 
+                
+                )
             }
         </div>
     );

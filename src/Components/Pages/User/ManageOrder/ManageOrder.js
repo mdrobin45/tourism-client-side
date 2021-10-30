@@ -68,7 +68,6 @@ const ManageOrder = () =>
                                     fullIcon={<i className="fa fa-star"></i>}
                                 />
                                 <p className='text-lg'>{item?.description}</p>
-                                <p className='font-bold text-green-800 text-lg'>Status: {item?.status}</p>
                             </div>
                         </div>
                         <div className='w-1/4'>
