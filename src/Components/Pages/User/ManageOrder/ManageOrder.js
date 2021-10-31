@@ -22,7 +22,7 @@ const ManageOrder = () =>
     const deleteOrder=(id) =>
     {
         Swal.fire({
-            title: 'Do you want to save the changes?',
+            title: 'Do you want to delete?',
             showCancelButton: true,
             confirmButtonText: 'Delete',
             }).then((result) => {

@@ -4,6 +4,7 @@ import Loader from "react-loader-spinner";
 import ReactStars from "react-rating-stars-component";
 import AllPageBanner from '../../../AllPageBanner/AllPageBanner';
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 const ManageRooms = () =>
 {
@@ -19,15 +20,25 @@ const ManageRooms = () =>
     // Delete Room
     const deleteRoom = (id) =>
     {
-        axios.delete(`https://evening-ridge-38074.herokuapp.com/rooms/${id}`)
-            .then(res =>
-            {
-                if (res.status === 200) {
-                    alert('deleted')
-                    setUpdateUI(updateUI + 1);
-                }
-            })
+        Swal.fire({
+            title: 'Do you want to delete?',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                axios.delete(`https://evening-ridge-38074.herokuapp.com/rooms/${id}`)
+                .then(res =>
+                {
+                    if (res.status === 200) {
+                        setUpdateUI(updateUI + 1);
+                    }
+                })
+              Swal.fire('Room Deleted', '', 'success')
+            }
+        })
     }
+
     return (
         <>
             <AllPageBanner pageName='Manage Rooms' />

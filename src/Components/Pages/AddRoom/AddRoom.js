@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import AllPageBanner from '../../AllPageBanner/AllPageBanner';
+import Swal from 'sweetalert2'
 
 const AddRoom = () =>
 {
@@ -13,7 +14,13 @@ const AddRoom = () =>
             .then(res =>
             {
                 if (res.status===200) {
-                    alert('added')
+                    Swal.fire({
+                        position: 'center center',
+                        icon: 'success',
+                        title: 'Room Added',
+                        showConfirmButton: false,
+                        timer: 1000
+                      })
                     reset()
                 }
             })

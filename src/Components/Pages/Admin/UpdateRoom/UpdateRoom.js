@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import Loader from "react-loader-spinner";
 import AllPageBanner from '../../../AllPageBanner/AllPageBanner';
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 const UpdateRoom = () =>
 {
@@ -59,7 +60,13 @@ const UpdateRoom = () =>
         .then(res =>
         {
             if (res.data.modifiedCount > 0) {
-                alert('updated')
+                Swal.fire({
+                    position: 'center center',
+                    icon: 'success',
+                    title: 'Room Details Updated',
+                    showConfirmButton: false,
+                    timer: 1000
+                  })
             }
         })
         e.preventDefault();
