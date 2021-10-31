@@ -76,7 +76,7 @@ const App = () =>
           </Switch>
           <Footer/>
         </Router> : <div
-          className='left-64 m-auto relative text-center top-72 w-2/4'>
+          className='md:left-64 left-10 m-auto relative text-center top-72 w-2/4'>
           <Loader
               type="Puff"
               color="#00BFFF"

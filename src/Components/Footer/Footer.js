@@ -10,7 +10,7 @@ const Footer = () => {
         <div>
             <section className='container pt-20 justify-between md:flex md:text-left py-10 text-center'>
                 <div>
-                    <NavLink className='text-3xl text-gray-600' to='/home'><img src={logo} alt="" /></NavLink>
+                    <NavLink className='text-3xl text-gray-600' to='/home'><img className='m-auto' src={logo} alt="" /></NavLink>
                 </div>
                 <div>
                     <h3 className='font-bold text-2xl pb-3'>Call Us</h3>

@@ -44,9 +44,10 @@ const PlaceOrder = () =>
 
     return (
         <div className='container'>
-            <section className='flex mt-16 justify-between'>
-                <div className='p-4 w-11/12'>
-                <img className='rounded' src={room?.img} alt='Thumbnail' />
+            <section className='md:flex mt-16 justify-between'>
+                <div className='p-4 md:w-11/12'>
+                    <img className='rounded' src={room?.img} alt='Thumbnail' />
+                    <h2 className='font-bold pt-6 text-3xl'>{room?.roomName}</h2>
                     <p className='text-lg py-3'>{room?.description}</p>
                     <h3 className='font-bold pt-6 text-2xl text-yellow-500'>Price: ${room?.price}</h3>
                 </div>

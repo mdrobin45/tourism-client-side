@@ -77,7 +77,7 @@ const MyOrder = () =>
                 </section> 
                 
                 ):<div
-                className='left-64 m-auto relative text-center top-10 w-2/4'>
+                className='left-10 m-auto md:left-64 relative text-center top-10 w-2/4'>
                 <Loader
                     type="Puff"
                     color="#00BFFF"
