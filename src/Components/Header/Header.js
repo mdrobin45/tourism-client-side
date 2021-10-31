@@ -64,7 +64,7 @@ const Header = () =>
                         user?.email?<NavLink className='hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium' to='/add-room'>Add Room(admin)</NavLink>:''
                       }
                       {
-                        user?.email?<NavLink className='hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium' to='/add-room'>Manage Rooms(admin)</NavLink>:''
+                        user?.email?<NavLink className='hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium' to='/manage-rooms'>Manage Rooms(admin)</NavLink>:''
                       }
                     </div>
                     

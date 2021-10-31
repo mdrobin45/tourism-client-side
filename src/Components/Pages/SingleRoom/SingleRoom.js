@@ -14,7 +14,7 @@ const SingleRoom = () =>
             .then(res => res.json())
             .then(data => setRoom(data));
     }, [id])
-    console.log(room);
+    
     return (
         <div className='shadow w-10/12 p-6 rounded mt-6 m-auto'>
             {
@@ -28,7 +28,7 @@ const SingleRoom = () =>
                 />
             </div>
             }
-            
+            <h2 className='font-bold pt-6 text-3xl'>{room?.name}</h2>
             <h3 className='font-bold py-3 text-3xl text-yellow-500'>Price: ${room?.price}</h3>
             <p className='text-lg py-3'>{room?.description}</p>
             <div className='text-center'>

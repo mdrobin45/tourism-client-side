@@ -16,6 +16,8 @@ import SingleRoom from './Components/Pages/SingleRoom/SingleRoom';
 import AddRoom from './Components/Pages/AddRoom/AddRoom';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import ManageRooms from './Components/Pages/Admin/ManageRooms/ManageRooms';
+import UpdateRoom from './Components/Pages/Admin/UpdateRoom/UpdateRoom';
 
 const App = () =>
 {
@@ -40,6 +42,12 @@ const App = () =>
             </Route>
             <PrivetRoute exact path='/add-room'>
               <AddRoom/>
+            </PrivetRoute>
+            <PrivetRoute exact path='/manage-rooms'>
+              <ManageRooms/>
+            </PrivetRoute>
+            <PrivetRoute exact path='/update-room/:id'>
+              <UpdateRoom/>
             </PrivetRoute>
             <Route exact path='/rooms'>
               <Rooms/>

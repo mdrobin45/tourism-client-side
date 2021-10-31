@@ -33,7 +33,9 @@ const PicRooms = () =>
                         className='p-3 py-6 rounded shadow'
                         key={room._id}>
                         <img className='rounded' src={room?.img} alt='Thumbnail' />
+                        <h2 className='font-bold pt-6 text-3xl'>{room?.name}</h2>
                         <div className='flex items-center justify-between pb-2 pt-6'>
+                            <h2>{room?.name}</h2>
                             <h3 className='font-bold text-3xl text-yellow-500'>${room?.price}/<sub className='text-gray-500 text-sm'>per night</sub></h3>
                             <div className='flex justify-center'>
                                 <img className='px-2' src={postIcon} alt="Post" />

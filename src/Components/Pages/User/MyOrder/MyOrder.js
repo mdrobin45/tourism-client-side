@@ -55,6 +55,7 @@ const MyOrder = () =>
                             <img src={item?.img} alt="Thumbnail" />
                         </div>
                         <div className='pl-6'>
+                            <h2 className='font-bold pt-6 text-3xl'>{item?.name}</h2>
                             <h2 className='font-bold text-3xl text-yellow-500'>${item?.price}</h2>
                             <ReactStars
                                 count={5}
