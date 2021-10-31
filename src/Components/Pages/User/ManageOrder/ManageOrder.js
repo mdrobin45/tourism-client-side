@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ReactStars from "react-rating-stars-component";
 import AllPageBanner from '../../../AllPageBanner/AllPageBanner';
+import Swal from 'sweetalert2'
+import Loader from "react-loader-spinner";
 
 const ManageOrder = () =>
 {
@@ -19,16 +21,22 @@ const ManageOrder = () =>
     // Delete order
     const deleteOrder=(id) =>
     {
-        const proceed = window.confirm('Are you sure want to delete?');
-        if (proceed) {
-            axios.delete(`https://evening-ridge-38074.herokuapp.com/my-orders/${id}`)
-            .then(res=>{
-                if (res.status === 200) {
-                    alert('deleted')
-                    setUpdateOrder(updateOrder + 1);
-                }
-            });
-        }
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                axios.delete(`https://evening-ridge-38074.herokuapp.com/my-orders/${id}`)
+                .then(res=>{
+                    if (res.status === 200) {
+                        setUpdateOrder(updateOrder + 1);
+                    }
+                });
+              Swal.fire('Order Deleted', '', 'success')
+            }
+            })
     }
 
 
@@ -38,7 +46,13 @@ const ManageOrder = () =>
         axios.put(`https://evening-ridge-38074.herokuapp.com/my-orders/${id}`)
             .then(res=>{
                 if (res.status === 200) {
-                    alert('approved')
+                    Swal.fire({
+                        position: 'center center',
+                        icon: 'success',
+                        title: 'Order Approved',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                     setUpdateOrder(updateOrder + 1);
                 }
             });
@@ -47,6 +61,7 @@ const ManageOrder = () =>
         <div>
             <AllPageBanner pageName='Manage Orders'/>
             {
+                orders?.length?
                 orders?.map(item => <section
                     className='mt-20'
                     key={item._id}>
@@ -82,14 +97,21 @@ const ManageOrder = () =>
                             <p className='text-lg'>Phone: {item?.phone}</p>
                             <p className='text-lg'>Address: {item?.address}</p>
                             <button onClick={()=>deleteOrder(item?._id)} className='bg-red-500 block w-full my-3 px-10 py-3 rounded text-white'>Delete</button>
-                            <button className='py-3 bg-yellow-500 block w-full my-3 rounded text-white'>Update</button>
                             {
                                 item?.status === 'Approved'?<button disabled onClick={() => approveOrder(item?._id)} className='bg-green-600 cursor-not-allowed px-10 block w-full my-3 py-3 rounded text-white'>Already Approved</button>:<button onClick={() => approveOrder(item?._id)} className='bg-green-600 px-10 block w-full my-3 py-3 rounded text-white'>Approve</button>
                             }
                         </div>
                     </div>
                 </section>
-                )
+                ):<div
+                className='left-64 m-auto relative text-center top-10 w-2/4'>
+                <Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />   
+              </div> 
             }
         </div>
     );

@@ -7,6 +7,7 @@ import bicycleIcon from '../../../images/bicycle.webp';
 import boatIcon from '../../../images/boad.webp';
 import ReactStars from "react-rating-stars-component";
 
+
 const PicRooms = () =>
 {
     const [rooms, setRooms] = useState([]);

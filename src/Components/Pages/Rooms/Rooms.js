@@ -7,6 +7,7 @@ import bicycleIcon from '../../images/bicycle.webp';
 import boatIcon from '../../images/boad.webp';
 import ReactStars from "react-rating-stars-component";
 import AllPageBanner from '../../AllPageBanner/AllPageBanner';
+import Loader from "react-loader-spinner";
 
 const Rooms = () =>
 {
@@ -29,6 +30,7 @@ const Rooms = () =>
 
                 <div className='grid grid-cols-3 gap-4'>
                     {
+                        rooms?.length?
                         rooms.map(room => <div
                             className='p-3 py-6 rounded shadow'
                             key={room._id}>
@@ -60,7 +62,15 @@ const Rooms = () =>
                                 <NavLink className='font-bold hover:text-yellow-500 mt-6' to={`/rooms/${room?._id}`}>Read More</NavLink>
                                 <NavLink className='text-yellow-500 mt-6 font-bold' to={`/place-order/${room?._id}`}>Book Now</NavLink>
                             </div>
-                        </div>)
+                        </div>) : <div
+                            className='left-full m-auto relative text-center'>
+                            <Loader
+                                type="Puff"
+                                color="#00BFFF"
+                                height={100}
+                                width={100}
+                            />
+                        </div>
                     }
                 </div>
             </div>

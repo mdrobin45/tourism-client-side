@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
@@ -14,50 +14,70 @@ import AuthProvider from './Context/AuthProvider';
 import PrivetRoute from './Components/PrivetRoute/PrivetRoute';
 import SingleRoom from './Components/Pages/SingleRoom/SingleRoom';
 import AddRoom from './Components/Pages/AddRoom/AddRoom';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 const App = () =>
 {
+  const [rooms, setRooms] = useState([]);
+    useEffect(() =>
+    {
+        fetch('https://evening-ridge-38074.herokuapp.com/rooms')
+            .then(res => res.json())
+            .then(data => setRooms(data));
+    },[])
   return (
     <AuthProvider className='App'>
-      <Router>
-      <Header />
-        <Switch>
-          <Route exact path='/'>
-            <Home/>
-          </Route>
-          <Route exact path='/home'>
-            <Home/>
-          </Route>
-          <PrivetRoute exact path='/add-room'>
-            <AddRoom/>
-          </PrivetRoute>
-          <Route exact path='/rooms'>
-            <Rooms/>
-          </Route>
-          <Route exact path='/contact'>
-            <Contact/>
-          </Route>
-          <PrivetRoute exact path='/my-order'>
-            <MyOrder/>
-          </PrivetRoute>
-          <PrivetRoute exact path='/manage-order'>
-            <ManageOrder/>
-          </PrivetRoute>
-          <Route exact path='/rooms/:id'>
-            <SingleRoom/>
-          </Route>
-          <PrivetRoute exact path='/place-order/:id'>
-            <PlaceOrder/>
-          </PrivetRoute>
-          <Route exact path='/login'>
-            <Login/>
-          </Route>
-          <Route exact path='/register'>
-            <Register/>
-          </Route>
-        </Switch>
-        <Footer/>
-      </Router>
+      {
+        rooms.length?<Router>
+        <Header />
+          <Switch>
+            <Route exact path='/'>
+              <Home/>
+            </Route>
+            <Route exact path='/home'>
+              <Home/>
+            </Route>
+            <PrivetRoute exact path='/add-room'>
+              <AddRoom/>
+            </PrivetRoute>
+            <Route exact path='/rooms'>
+              <Rooms/>
+            </Route>
+            <Route exact path='/contact'>
+              <Contact/>
+            </Route>
+            <PrivetRoute exact path='/my-order'>
+              <MyOrder/>
+            </PrivetRoute>
+            <PrivetRoute exact path='/manage-order'>
+              <ManageOrder/>
+            </PrivetRoute>
+            <Route exact path='/rooms/:id'>
+              <SingleRoom/>
+            </Route>
+            <PrivetRoute exact path='/place-order/:id'>
+              <PlaceOrder/>
+            </PrivetRoute>
+            <Route exact path='/login'>
+              <Login/>
+            </Route>
+            <Route exact path='/register'>
+              <Register/>
+            </Route>
+          </Switch>
+          <Footer/>
+        </Router> : <div
+          className='left-64 m-auto relative text-center top-72 w-2/4'>
+          <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={100}
+              width={100}
+          />   
+        </div> 
+      }
+      
     </AuthProvider>
   );
 };

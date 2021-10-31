@@ -3,6 +3,8 @@ import useAuth from '../../../../Hooks/useAuth'
 import ReactStars from "react-rating-stars-component";
 import axios from 'axios';
 import AllPageBanner from '../../../AllPageBanner/AllPageBanner';
+import Swal from 'sweetalert2'
+import Loader from "react-loader-spinner";
 
 const MyOrder = () =>
 {
@@ -17,23 +19,31 @@ const MyOrder = () =>
             .then(data => setOrders(data));
     }, [updateOrder])
 
+
+    // Cancel or delete order
     const cancelOrder=(id) =>
     {
-        const proceed = window.confirm('Are you sure want to delete?');
-        if (proceed) {
-            axios.delete(`https://evening-ridge-38074.herokuapp.com/my-orders/${id}`)
-            .then(res=>{
-                if (res.status === 200) {
-                    alert('deleted')
-                    setUpdateOrder(updateOrder + 1);
-                }
-            });
-        }
+        Swal.fire({
+            title: 'Do you want to delete this order?',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+          }).then((result) => {
+              if (result.isConfirmed) {
+                axios.delete(`https://evening-ridge-38074.herokuapp.com/my-orders/${id}`)
+                .then(res=>{
+                    if (res.status === 200) {
+                        setUpdateOrder(updateOrder + 1);
+                    }
+                });
+                Swal.fire('Order Deleted', '', 'success')
+            }
+          })
     }
     return (
         <div>
             <AllPageBanner pageName='My Order'/>
             {
+                myOrder?.length?
                 myOrder?.map(item => <section
                     className='mt-20'
                     key={item._id}>
@@ -65,7 +75,15 @@ const MyOrder = () =>
                     </div>
                 </section> 
                 
-                )
+                ):<div
+                className='left-64 m-auto relative text-center top-10 w-2/4'>
+                <Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />   
+              </div> 
             }
         </div>
     );
