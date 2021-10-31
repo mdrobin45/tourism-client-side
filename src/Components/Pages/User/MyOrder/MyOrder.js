@@ -1,7 +1,6 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import useAuth from '../../../../Hooks/useAuth'
 import ReactStars from "react-rating-stars-component";
-import { useEffect } from 'react/cjs/react.development';
 import axios from 'axios';
 import AllPageBanner from '../../../AllPageBanner/AllPageBanner';
 
