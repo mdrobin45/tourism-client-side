@@ -49,7 +49,7 @@ const ManageRooms = () =>
                     </div>
                 </div>
 
-                <div className='grid grid-cols-3 gap-4'>
+                <div className='gap-4 grid md:grid-cols-3 md:my-0 my-6'>
                     {
                         rooms?.length?
                         rooms.map(room => <div

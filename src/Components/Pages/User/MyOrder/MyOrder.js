@@ -50,12 +50,12 @@ const MyOrder = () =>
                         {
                         item?.status==='Pending'?<div className='text-center rounded-t-lg bg-yellow-500 text-white text-lg py-2 w-10/12 m-auto'><h2>Pending</h2></div>:<div className='text-center rounded-t-lg bg-green-600 text-white text-lg py-2 w-10/12 m-auto'><h2>Approved</h2></div>
                         }
-                        <div className='border pr-6 flex items-center m-auto mb-6 rounded-b-lg shadow w-10/12' >
+                        <div className='border items-center m-auto mb-6 md:flex md:pb-0 md:pr-6 md:px-0 pb-10 px-6 rounded-b-lg shadow w-10/12' >
                         <div>
                             <img src={item?.img} alt="Thumbnail" />
                         </div>
                         <div className='pl-6'>
-                            <h2 className='font-bold pt-6 text-3xl'>{item?.name}</h2>
+                            <h2 className='font-bold pt-6 text-3xl'>{item?.roomName}</h2>
                             <h2 className='font-bold text-3xl text-yellow-500'>${item?.price}</h2>
                             <ReactStars
                                 count={5}
@@ -71,7 +71,7 @@ const MyOrder = () =>
                             <p className='text-lg'>{item?.description}</p>
                         </div>
                         {
-                            item?.status !== 'Approved'?<button onClick={()=>cancelOrder(item?._id)} className='bg-red-500 px-10 py-3 rounded text-white'>Cancel</button>:''
+                            item?.status !== 'Approved'?<button onClick={()=>cancelOrder(item?._id)} className='bg-red-500 md:w-auto px-10 py-3 rounded text-white w-full'>Cancel</button>:''
                         }
                     </div>
                 </section> 

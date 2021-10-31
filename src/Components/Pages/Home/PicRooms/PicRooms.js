@@ -27,23 +27,22 @@ const PicRooms = () =>
                 </div>
             </div>
 
-            <div className='grid grid-cols-3 gap-4'>
+            <div className='md:grid grid-cols-3 gap-4'>
                 {
                     rooms.slice(0,6).map(room => <div
-                        className='p-3 py-6 rounded shadow'
+                        className='md:my-0 my-6 p-3 py-6 rounded shadow'
                         key={room._id}>
                         <img className='rounded' src={room?.img} alt='Thumbnail' />
-                        <h2 className='font-bold pt-6 text-3xl'>{room?.name}</h2>
+                        <h2 className='font-bold pt-6 text-3xl'>{room?.roomName}</h2>
                         <div className='flex items-center justify-between pb-2 pt-6'>
-                            <h2>{room?.name}</h2>
-                            <h3 className='font-bold text-3xl text-yellow-500'>${room?.price}/<sub className='text-gray-500 text-sm'>per night</sub></h3>
-                            <div className='flex justify-center'>
-                                <img className='px-2' src={postIcon} alt="Post" />
-                                <img className='px-2' src={compassIcon} alt="Post" />
-                                <img className='px-2' src={bicycleIcon} alt="Post" />
-                                <img className='px-2' src={boatIcon} alt="Post" />
+                                <h3 className='font-bold text-3xl text-yellow-500'>${room?.price}/<sub className='text-gray-500 text-sm'>per night</sub></h3>
+                                <div className='flex justify-center'>
+                                    <img className='px-2' src={postIcon} alt="Post" />
+                                    <img className='px-2' src={compassIcon} alt="Post" />
+                                    <img className='px-2' src={bicycleIcon} alt="Post" />
+                                    <img className='px-2' src={boatIcon} alt="Post" />
+                                </div>
                             </div>
-                        </div>
 
                         <ReactStars
                             count={5}

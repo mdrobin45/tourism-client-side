@@ -28,11 +28,11 @@ const Rooms = () =>
                     </div>
                 </div>
 
-                <div className='grid grid-cols-3 gap-4'>
+                <div className='grid md:grid-cols-3 gap-4'>
                     {
                         rooms?.length?
                         rooms.map(room => <div
-                            className='p-3 py-6 rounded shadow'
+                            className='md:my-0 my-6 p-3 py-6 rounded shadow'
                             key={room._id}>
                             <img className='rounded' src={room?.img} alt='Thumbnail' />
                             <h2 className='font-bold pt-6 text-3xl'>{room?.roomName}</h2>

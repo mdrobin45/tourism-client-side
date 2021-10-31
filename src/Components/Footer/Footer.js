@@ -2,14 +2,15 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../Container/Container.css'
 import { ImFacebook } from 'react-icons/im';
-import { BsTwitter,BsInstagram,BsLinkedin } from 'react-icons/bs';
+import { BsTwitter, BsInstagram, BsLinkedin } from 'react-icons/bs';
+import logo from '../images/logo.webp'
 
 const Footer = () => {
     return (
         <div>
             <section className='container pt-20 justify-between md:flex md:text-left py-10 text-center'>
                 <div>
-                    <NavLink className='text-3xl text-gray-600' to='/home'>Travel & Tourism</NavLink>
+                    <NavLink className='text-3xl text-gray-600' to='/home'><img src={logo} alt="" /></NavLink>
                 </div>
                 <div>
                     <h3 className='font-bold text-2xl pb-3'>Call Us</h3>

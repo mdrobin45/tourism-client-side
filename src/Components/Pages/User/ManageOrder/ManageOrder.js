@@ -68,8 +68,8 @@ const ManageOrder = () =>
                     {
                         item?.status==='Pending'?<div className='text-center rounded-t-lg bg-yellow-500 text-white text-lg py-2 w-10/12 m-auto'><h2>Pending</h2></div>:<div className='text-center rounded-t-lg bg-green-600 text-white text-lg py-2 w-10/12 m-auto'><h2>Approved</h2></div>
                     }
-                    <div className='border rounded-b-lg flex pr-6 m-auto mb-6 shadow w-10/12'>
-                        <div className='w-3/4 pr-6'>
+                    <div className='border rounded-b-lg md:flex md:pr-6 m-auto mb-6 shadow w-10/12'>
+                        <div className='md:pr-6 md:w-3/4'>
                             <div>
                                 <img className='w-full' src={item?.img} alt="Thumbnail" />
                             </div>
@@ -89,7 +89,7 @@ const ManageOrder = () =>
                                 <p className='text-lg'>{item?.description}</p>
                             </div>
                         </div>
-                        <div className='w-1/4'>
+                        <div className='md:px-0 md:w-1/4 px-4'>
                             <h2 className='text-3xl font-bold text-center text-yellow-500 pt-3'>User Info</h2>
                             <hr />
                             <h2 className='text-2xl font-bold pt-4'>Name: {item?.name}</h2>

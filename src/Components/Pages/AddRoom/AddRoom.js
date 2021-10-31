@@ -28,7 +28,7 @@ const AddRoom = () =>
     return (
         <>
             <AllPageBanner pageName='Add Room'/>
-            <div className='border-2 m-auto mt-16 p-6 shadow w-1/2'>
+            <div className='border-2 m-auto mt-16 p-6 shadow md:w-1/2'>
                 <h2 className='font-bold pb-6 text-3xl text-center text-gray-700'>Add Room</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input className='bg-gray-100 border-2 my-3 px-3 py-4 rounded text-xl w-full' placeholder='Room Name' {...register("roomName")} />
