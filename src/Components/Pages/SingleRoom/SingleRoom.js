@@ -32,8 +32,8 @@ const SingleRoom = () =>
             <h3 className='font-bold py-3 text-3xl text-yellow-500'>Price: ${room?.price}</h3>
             <p className='text-lg py-3'>{room?.description}</p>
             <div className='text-center'>
-                <Link className='bg-yellow-500 inline-block mx-3 px-16 py-3 rounded text-lg text-white' to={`/place-order/${room?._id}`}>Book Now</Link>
-                <Link className='bg-yellow-500 inline-block mx-3 px-16 py-3 rounded text-lg text-white' to='/rooms'>View All Rooms</Link>
+                <Link className='bg-yellow-500 my-3 md:my-0 inline-block mx-3 px-16 py-3 rounded text-lg text-white' to={`/place-order/${room?._id}`}>Book Now</Link>
+                <Link className='bg-yellow-500 my-3 md:my-0 inline-block mx-3 px-16 py-3 rounded text-lg text-white' to='/rooms'>View All Rooms</Link>
             </div>
         </div>
     );
